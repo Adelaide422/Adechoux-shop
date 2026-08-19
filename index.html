@@ -236,7 +236,7 @@
 
             <!-- PRODUIT 1 -->
             <article class="product-card">
-                <img src="Collier coeur aigle d'ange.jpeg" alt="Collier coeur aigle d'ange" class="product-media">
+                <img src="bijou1.jpg" alt="Collier coeur aigle d'ange" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Cœur Aigle d'Ange</h3>
                     <div class="product-price">4 500 FCFA</div>
@@ -251,7 +251,7 @@
 
             <!-- PRODUIT 2 -->
             <article class="product-card">
-                <img src="Collier d'amitié Barbie et le palais de diamant...." alt="Collier d'amitié Barbie" class="product-media">
+                <img src="bijou2.jpg" alt="Collier d'amitié Barbie" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier d'Amitié Barbie & Palais</h3>
                     <div class="product-price">4 000 FCFA</div>
@@ -267,7 +267,7 @@
             <!-- PRODUIT 3 (Vidéo) -->
             <article class="product-card">
                 <video controls class="product-media">
-                    <source src="Collier en coeur avec flèche.mp4" type="video/mp4">
+                    <source src="video1.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
                 <div class="product-info">
@@ -284,7 +284,7 @@
             
             <!-- PRODUIT 4 (Miroir Barbie) -->
             <article class="product-card">
-                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier miroir barbie" class="product-media">
+                <img src="bijou3.jpg" alt="Collier miroir barbie" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Barbie Miroir</h3>
                     <div class="product-price">4 000 FCFA</div>
@@ -299,7 +299,7 @@
 
             <!-- PRODUIT 5 (Château Barbie) -->
             <article class="product-card">
-                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier Barbie Château" class="product-media">
+                <img src="bijou3.jpg" alt="Collier Barbie Château" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Barbie Château</h3>
                     <div class="product-price">4 000 FCFA</div>
@@ -318,7 +318,7 @@
         <section class="payment-section">
             <h3>Comment Commander & Payer au Gabon ?</h3>
             <p>Pour valider votre commande, effectuez le paiement par Mobile Money au numéro suivant :</p>
-            <div class="payment-number">Airtel Money : 07 75 05 946</div>
+            <div class="payment-number">Airtel Money : 77505946</div>
             <p style="margin-top: 15px; font-size: 0.95em; color: var(--light-text-color);">
                 Envoyez ensuite la capture d'écran de votre paiement avec le nom du bijou choisi sur notre service client WhatsApp pour la livraison.
             </p>
@@ -344,14 +344,12 @@
         function orderOnWhatsApp(productName, price, qtyInputId) {
             const qty = document.getElementById(qtyInputId).value;
             const total = price * qty;
-            const phoneNumber = "241077505946"; 
+            const phoneNumber = "24177505946"; 
 
-            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA%0a(Paiement Airtel Money au 077505946)`;
+            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA%0a(Paiement Airtel Money au 77505946)`;
             
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
 </body>
 </html>
-          
-           
