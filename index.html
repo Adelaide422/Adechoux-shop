@@ -178,12 +178,38 @@
             background-color: #ff85c4;
         }
 
+        .payment-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .payment-section h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .payment-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--text-color);
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 10px 0;
+            border: 1px dashed var(--primary-color);
+        }
+
         footer {
             background-color: var(--accent-color);
-            padding: 30px 20px;
+            padding: 20px;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            margin-top: 60px;
+            margin-top: 40px;
             color: var(--light-text-color);
         }
 
@@ -209,38 +235,38 @@
 
             <!-- PRODUIT 1 -->
             <article class="product-card">
-                <img src="Collier coeur aigle d'ange.jpeg" alt="Collier cœur aigle d'ange" class="product-media">
+                <img src="collier1.jpeg" alt="Collier cœur aigle d'ange" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Cœur Aigle d'Ange</h3>
-                    <div class="product-price">15 000 FCFA</div>
+                    <div class="product-price">4 500 FCFA</div>
                     <div class="quantity-selector">
                         <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
                         <input type="number" value="1" min="1" class="qty-input" id="qty-1">
                         <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Cœur Aigle d\'Ange', 15000, 'qty-1')">Commander</button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Cœur Aigle d\'Ange', 4500, 'qty-1')">Commander</button>
                 </div>
             </article>
 
             <!-- PRODUIT 2 -->
             <article class="product-card">
-                <img src="Collier d'amitié Barbie et le palais de diamant...." alt="Collier d'amitié Barbie" class="product-media">
+                <img src="collier2.jpeg" alt="Collier d'amitié Barbie" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Collier d'Amitié Barbie</h3>
-                    <div class="product-price">12 000 FCFA</div>
+                    <h3 class="product-name">Collier d'Amitié Barbie & Palais</h3>
+                    <div class="product-price">4 000 FCFA</div>
                     <div class="quantity-selector">
                         <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
                         <input type="number" value="1" min="1" class="qty-input" id="qty-2">
                         <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button class="order-btn" onclick="orderOnWhatsApp('Collier d\'Amitié Barbie', 12000, 'qty-2')">Commander</button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier d\'Amitié Barbie & Palais', 4000, 'qty-2')">Commander</button>
                 </div>
             </article>
 
             <!-- PRODUIT 3 (Vidéo) -->
             <article class="product-card">
                 <video controls class="product-media">
-                    <source src="Collier en coeur avec flèche.mp4" type="video/mp4">
+                    <source src="video1.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
                 <div class="product-info">
@@ -257,7 +283,7 @@
             
             <!-- PRODUIT 4 -->
             <article class="product-card">
-                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier Barbie Miroir" class="product-media">
+                <img src="collier3.jpeg" alt="Collier Barbie Miroir" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Barbie Miroir</h3>
                     <div class="product-price">4 000 FCFA</div>
@@ -272,7 +298,7 @@
 
             <!-- PRODUIT 5 -->
             <article class="product-card">
-                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier Barbie Château" class="product-media">
+                <img src="collier3.jpeg" alt="Collier Barbie Château" class="product-media">
                 <div class="product-info">
                     <h3 class="product-name">Collier Barbie Château</h3>
                     <div class="product-price">4 000 FCFA</div>
@@ -286,6 +312,16 @@
             </article>
 
         </div>
+
+        <!-- SECTION PAIEMENT GABON -->
+        <section class="payment-section">
+            <h3>Comment Commander & Payer au Gabon ?</h3>
+            <p>Pour valider votre commande, effectuez le paiement par Mobile Money au numéro suivant :</p>
+            <div class="payment-number">Airtel Money : 07 75 05 946</div>
+            <p style="margin-top: 15px; font-size: 0.95em; color: var(--light-text-color);">
+                Envoyez ensuite la capture d'écran de votre paiement avec le nom du bijou choisi sur notre service client WhatsApp pour la livraison.
+            </p>
+        </section>
     </main>
 
     <footer>
@@ -309,11 +345,10 @@
             const total = price * qty;
             const phoneNumber = "241077505946"; 
 
-            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA`;
+            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA%0a(Paiement Airtel Money au 077505946)`;
             
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
 </body>
 </html>
-     
