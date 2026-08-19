@@ -5,294 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adechoux - Boutique de Bijoux</title>
     <style>
-        :root {
-            --primary-color: #FF69B4;
-            --secondary-color: #FFB6C1;
-            --accent-color: #FFF0F5;
-            --text-color: #333333;
-            --light-text-color: #777777;
-            --bg-color: #FFFFFF;
-            --card-bg: #F9F9F9;
-            --border-color: #EEEEEE;
-            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+        :root { --primary-color: #FF69B4; --accent-color: #FFF0F5; --text-color: #333333; --bg-color: #FFFFFF; --card-bg: #F9F9F9; --border-color: #EEEEEE; --font-family: 'Segoe UI', sans-serif; }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
         header { background-color: var(--accent-color); padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--border-color); position: relative; }
-        header h1 { margin: 0; font-size: 2.8em; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
-        header p { margin: 8px 0 0; font-size: 1.1em; color: var(--light-text-color); }
-        
-        /* Bouton Panier Flottant */
-        .cart-btn-fixed { position: absolute; right: 20px; top: 30px; background-color: var(--primary-color); color: white; border: none; border-radius: 30px; padding: 10px 20px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
+        .cart-btn-fixed { position: absolute; right: 20px; top: 30px; background-color: var(--primary-color); color: white; border: none; border-radius: 30px; padding: 10px 20px; cursor: pointer; }
         main { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        main h2 { text-align: center; font-size: 1.8em; margin-bottom: 40px; color: var(--text-color); }
         .products-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .product-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; width: 280px; overflow: hidden; transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .product-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; width: 280px; display: flex; flex-direction: column; overflow: hidden; }
         .product-media { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
-        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-name { font-size: 1.1em; font-weight: 600; margin: 0 0 10px; color: var(--text-color); }
-        .product-price { font-size: 1.3em; font-weight: 700; color: var(--primary-color); margin-bottom: 15px; }
-        .quantity-selector { display: flex; align-items: center; border: 1px solid var(--border-color); border-radius: 8px; width: 120px; margin-bottom: 15px; background: #fff; }
-        .qty-btn { background: none; border: none; padding: 10px 15px; cursor: pointer; }
-        .qty-input { flex-grow: 1; text-align: center; border: none; font-weight: 600; width: 30px; background: transparent; }
-        .order-btn { background-color: var(--primary-color); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-weight: 600; cursor: pointer; width: 100%; margin-top: auto; }
-        
-        /* Fenêtre du Panier (Modal) */
-        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
-        .cart-content { background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 20px; }
-        .close-cart { background: none; border: none; font-size: 1.5em; cursor: pointer; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; }
-        .remove-item { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-        .cart-total { font-size: 1.4em; font-weight: bold; text-align: right; margin: 20px 0; color: var(--primary-color); }
-        .whatsapp-checkout { background-color: #25D366; color: white; border: none; border-radius: 10px; padding: 14px 20px; font-weight: 600; cursor: pointer; width: 100%; text-align: center; font-size: 1.1em; }
-
-        .payment-section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 30px; text-align: center; margin-top: 60px; }
-        .payment-number { font-size: 1.4em; font-weight: bold; background: #fff; padding: 10px 20px; border-radius: 8px; display: inline-block; margin: 10px 0; border: 1px dashed var(--primary-color); }
+        .product-info { padding: 20px; }
+        .order-btn { background-color: var(--primary-color); color: white; border: none; border-radius: 10px; padding: 12px; width: 100%; cursor: pointer; margin-top: 10px; }
+        .cart-modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .cart-content { background: white; padding: 20px; border-radius: 15px; width: 90%; max-width: 500px; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>ADECHOUX</h1>
-        <p>Vos bijoux préférés au meilleur prix</p>
         <button class="cart-btn-fixed" onclick="toggleCart()">🛒 Panier (<span id="cart-count">0</span>)</button>
     </header>
 
     <main>
-        <h2>Nos Collections</h2>
         <div class="products-grid">
-            <!-- ARTICLE 1 -->
+            <!-- 1. Cœur Aigle -->
             <article class="product-card">
-                <img src="Images/collier-coeur-aigle (1).jpeg" alt="Collier Cœur Aigle d'Ange" class="product-media">
+                <img src="Images/collier-coeur-aigle (1).jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Collier Cœur Aigle d'Ange</h3>
-                    <div class="product-price">4 500 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Collier Cœur Aigle d\'Ange', 4500)">Ajouter au panier</button>
+                    <h3>Collier Cœur Aigle d'Ange</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Collier Cœur Aigle', 4500)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 2 -->
+            <!-- 2. Amitié Barbie -->
             <article class="product-card">
-                <img src="Images/collier-amitie-barbie.jpeg" alt="Collier d'Amitié Barbie" class="product-media">
+                <img src="Images/collier-amitie-barbie.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Collier d'Amitié Barbie</h3>
-                    <div class="product-price">4 000 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Collier d\'Amitié Barbie', 4000)">Ajouter au panier</button>
+                    <h3>Collier Amitié Barbie</h3><p>4 000 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Collier Amitié Barbie', 4000)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 3 (Vidéo muette) -->
+            <!-- 3. Cœur Flèche -->
             <article class="product-card">
                 <video muted autoplay loop class="product-media"><source src="Images/collier-coeur-fleche.mp4" type="video/mp4"></video>
                 <div class="product-info">
-                    <h3 class="product-name">Collier en Cœur avec Flèche</h3>
-                    <div class="product-price">6 000 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Collier en Cœur avec Flèche', 6000)">Ajouter au panier</button>
+                    <h3>Collier Cœur Flèche</h3><p>6 000 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Collier Cœur Flèche', 6000)">Ajouter</button>
                 </div>
             </article>
-            
-            <!-- ARTICLE 4 -->
+            <!-- 4. Miroir Barbie -->
             <article class="product-card">
-                <img src="Images/collier-miroir-barbie.jpeg" alt="Collier Miroir Barbie" class="product-media">
+                <img src="Images/collier-miroir-barbie.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Collier Miroir Barbie</h3>
-                    <div class="product-price">4 000 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Collier Miroir Barbie', 4000)">Ajouter au panier</button>
+                    <h3>Collier Miroir Barbie</h3><p>4 000 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Collier Miroir Barbie', 4000)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 5 -->
+            <!-- 5. Clip Oreille -->
             <article class="product-card">
-                <img src="Images/clip-oreille.jpeg" alt="Clip Oreille" class="product-media">
+                <img src="Images/clip-oreille.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Clip Oreille</h3>
-                    <div class="product-price">4 500 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Clip Oreille', 4500)">Ajouter au panier</button>
+                    <h3>Clip Oreille</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Clip Oreille', 4500)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 6 -->
+            <!-- 6. Papillon -->
             <article class="product-card">
-                <img src="Images/clip-oreille-papillon.jpeg" alt="Clip Oreille Papillon" class="product-media">
+                <img src="Images/clip-oreille-papillon.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Clip Oreille Papillon</h3>
-                    <div class="product-price">4 500 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Clip Oreille Papillon', 4500)">Ajouter au panier</button>
+                    <h3>Clip Papillon</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Clip Papillon', 4500)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 7 -->
+            <!-- 7. 4 bagues -->
             <article class="product-card">
-                <img src="Images/Ensemble-4-bagues.jpeg" alt="Ensemble de 4 bagues" class="product-media">
+                <img src="Images/Ensemble-4-bagues.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Ensemble de 4 bagues</h3>
-                    <div class="product-price">4 500 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Ensemble de 4 bagues', 4500)">Ajouter au panier</button>
+                    <h3>Ensemble 4 bagues</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, '4 bagues', 4500)">Ajouter</button>
                 </div>
             </article>
-
-            <!-- ARTICLE 8 (Corrigé avec le nom exact du fichier) -->
+            <!-- 8. Bracelet Bague -->
             <article class="product-card">
-                <img src="Images/Ensemble-bracelet-bague.jpeg" alt="Ensemble Bracelet et Bague" class="product-media">
+                <img src="Images/Ensemble-bracelet-bague.jpeg" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">Ensemble Bracelet et Bague</h3>
-                    <div class="product-price">4 500 FCFA</div>
-                    <div class="quantity-selector">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
-                    </div>
-                    <button class="order-btn" onclick="addToCart(this, 'Ensemble Bracelet et Bague', 4500)">Ajouter au panier</button>
+                    <h3>Bracelet et Bague</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Bracelet Bague', 4500)">Ajouter</button>
+                </div>
+            </article>
+            <!-- 9. Vidéo Cœur -->
+            <article class="product-card">
+                <video muted autoplay loop class="product-media"><source src="Images/Ensemble-collier-bague-coeur.mp4" type="video/mp4"></video>
+                <div class="product-info">
+                    <h3>Collier Bague Cœur (Vidéo)</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Vidéo Cœur', 4500)">Ajouter</button>
+                </div>
+            </article>
+            <!-- 10. Vidéo Rose -->
+            <article class="product-card">
+                <video muted autoplay loop class="product-media"><source src="Images/Ensemble-collier-bracelet-bague-rose.mp4" type="video/mp4"></video>
+                <div class="product-info">
+                    <h3>Collier Bracelet Rose (Vidéo)</h3><p>4 500 FCFA</p>
+                    <input type="number" value="1" min="1" class="qty-input">
+                    <button class="order-btn" onclick="addToCart(this, 'Vidéo Rose', 4500)">Ajouter</button>
                 </div>
             </article>
         </div>
-
-        <section class="payment-section">
-            <h3>Paiement Airtel Money</h3>
-            <div class="payment-number">+241 77 50 59 46</div>
-        </section>
     </main>
 
-    <!-- FENÊTRE MODALE DU PANIER -->
-    <div class="cart-modal" id="cartModal">
+    <div class="cart-modal" id="cartModal" style="display:none;">
         <div class="cart-content">
-            <div class="cart-header">
-                <h3>Mon Panier Adechoux</h3>
-                <button class="close-cart" onclick="toggleCart()">&times;</button>
-            </div>
+            <h3>Mon Panier</h3>
             <div id="cart-items-container"></div>
-            <div class="cart-total" id="cart-total">Total : 0 FCFA</div>
-            <button class="whatsapp-checkout" onclick="checkoutWhatsApp()">Commander sur WhatsApp</button>
+            <button onclick="checkoutWhatsApp()">Commander sur WhatsApp</button>
         </div>
     </div>
 
     <script>
         let cart = [];
-
-        function updateQty(button, change) {
-            const input = button.parentElement.querySelector('.qty-input');
-            let val = parseInt(input.value) + change;
-            input.value = val < 1 ? 1 : val;
+        function addToCart(btn, name, price) {
+            let qty = parseInt(btn.previousElementSibling.value);
+            cart.push({name, price, qty});
+            document.getElementById('cart-count').innerText = cart.length;
         }
-
-        function addToCart(button, name, price) {
-            const card = button.closest('.product-card');
-            const qty = parseInt(card.querySelector('.qty-input').value);
-            
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.qty += qty;
-            } else {
-                cart.push({ name: name, price: price, qty: qty });
-            }
-            updateCartUI();
-            alert(qty + " x " + name + " ajouté(s) au panier !");
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const container = document.getElementById('cart-items-container');
-            const totalElement = document.getElementById('cart-total');
-            
-            let totalCount = 0;
-            let totalPrice = 0;
-            container.innerHTML = '';
-
-            if (cart.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#777;">Votre panier est vide.</p>';
-            } else {
-                cart.forEach((item, index) => {
-                    totalCount += item.qty;
-                    let itemTotal = item.price * item.qty;
-                    totalPrice += itemTotal;
-
-                    container.innerHTML += `
-                        <div class="cart-item">
-                            <div>
-                                <strong>${item.name}</strong><br>
-                                ${item.qty} x ${item.price.toLocaleString('fr-FR')} FCFA = <b>${itemTotal.toLocaleString('fr-FR')} FCFA</b>
-                            </div>
-                            <button class="remove-item" onclick="removeFromCart(${index})">X</button>
-                        </div>
-                    `;
-                });
-            }
-
-            cartCount.textContent = totalCount;
-            totalElement.textContent = "Total : " + totalPrice.toLocaleString('fr-FR') + " FCFA";
-        }
-
-        function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-
+        function toggleCart() { document.getElementById('cartModal').style.display = (document.getElementById('cartModal').style.display === 'flex') ? 'none' : 'flex'; }
         function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Votre panier est vide !");
-                return;
-            }
-
-            let message = "Bonjour Adechoux, je souhaite commander les articles suivants :%0a";
-            let totalPrice = 0;
-
-            cart.forEach(item => {
-                let itemTotal = item.price * item.qty;
-                totalPrice += itemTotal;
-                message += `- ${item.qty}x ${item.name} (${itemTotal.toLocaleString('fr-FR')} FCFA)%0a`;
-            });
-
-            message += `%0a*Total général : ${totalPrice.toLocaleString('fr-FR')} FCFA*%0a(Paiement Airtel Money au +241 77 50 59 46)`;
-
-            const phoneNumber = "24177505946";
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            let msg = "Commande Adechoux:%0a" + cart.map(i => i.qty + "x " + i.name).join("%0a");
+            window.open("https://wa.me/24177505946?text=" + msg);
         }
     </script>
 </body>
 </html>
-
-         
-                  
-            
-         
