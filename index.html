@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+            <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -16,730 +17,118 @@
             --border-color: #EEEEEE;
             --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        body {
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: var(--accent-color);
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: 1px;
-        }
-        header p {
-            margin: 8px 0 0;
-            font-size: 1.1em;
-            color: var(--light-text-color);
-        }
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        main h2 {
-            text-align: center;
-            font-size: 1.8em;
-            margin-bottom: 40px;
-            color: var(--text-color);
-        }
-        .products-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        .product-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            width: 280px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        .product-media {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
-            display: block;
-        }
-        .product-info {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .product-name {
-            font-size: 1.1em;
-            font-weight: 600;
-            margin: 0 0 10px;
-            color: var(--text-color);
-        }
-        .product-price {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            width: 120px;
-            margin-bottom: 15px;
-            background: #fff;
-        }
-        .qty-btn {
-            background: none;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .qty-input {
-            flex-grow: 1;
-            text-align: center;
-            border: none;
-            font-weight: 600;
-            width: 30px;
-            background: transparent;
-        }
-        .order-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 14px 20px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: auto;
-        }
-        .payment-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 60px;
-        }
-        .payment-number {
-            font-size: 1.4em;
-            font-weight: bold;
-            background: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 10px 0;
-            border: 1px dashed var(--primary-color);
-        }
-        /* =========================
-           BOUTON PANIER
-        ========================= */
-        .cart-button {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            padding: 15px 22px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-        .cart-count {
-            background: white;
-            color: var(--primary-color);
-            border-radius: 50%;
-            padding: 2px 7px;
-            margin-left: 5px;
-        }
-        /* =========================
-           PANIER
-        ========================= */
-        .cart-panel {
-            position: fixed;
-            top: 0;
-            right: -420px;
-            width: 380px;
-            max-width: 90%;
-            height: 100vh;
-            background: white;
-            z-index: 2000;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.15);
-            padding: 25px;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-        }
-        .cart-panel.open {
-            right: 0;
-        }
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        .cart-header h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-        .close-cart {
-            border: none;
-            background: none;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        .cart-item {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .cart-item-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .cart-item-price {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        .remove-item {
-            background: none;
-            border: none;
-            color: #999;
-            cursor: pointer;
-            margin-top: 5px;
-            padding: 0;
-        }
-        .cart-total {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-top: 25px;
-        }
-        .whatsapp-btn {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            background: #25D366;
-            color: white;
-            padding: 14px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-weight: 600;
-        }
-        .empty-cart {
-            text-align: center;
-            color: var(--light-text-color);
-            padding: 30px 0;
-        }
-        @media (max-width: 700px) {
-            .product-card {
-                width: 100%;
-                max-width: 350px;
-            }
-            .cart-panel {
-                width: 320px;
-            }
-        }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+        header { background-color: var(--accent-color); padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--border-color); }
+        header h1 { margin: 0; font-size: 2.8em; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
+        header p { margin: 8px 0 0; font-size: 1.1em; color: var(--light-text-color); }
+        main { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        main h2 { text-align: center; font-size: 1.8em; margin-bottom: 40px; color: var(--text-color); }
+        .products-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .product-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; width: 280px; overflow: hidden; transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .product-media { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-name { font-size: 1.1em; font-weight: 600; margin: 0 0 10px; color: var(--text-color); }
+        .product-price { font-size: 1.3em; font-weight: 700; color: var(--primary-color); margin-bottom: 15px; }
+        .quantity-selector { display: flex; align-items: center; border: 1px solid var(--border-color); border-radius: 8px; width: 120px; margin-bottom: 15px; background: #fff; }
+        .qty-btn { background: none; border: none; padding: 10px 15px; cursor: pointer; }
+        .qty-input { flex-grow: 1; text-align: center; border: none; font-weight: 600; width: 30px; background: transparent; }
+        .order-btn { background-color: var(--primary-color); color: white; border: none; border-radius: 10px; padding: 14px 20px; font-weight: 600; cursor: pointer; width: 100%; margin-top: auto; }
+        .payment-section { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 15px; padding: 30px; text-align: center; margin-top: 60px; }
+        .payment-number { font-size: 1.4em; font-weight: bold; background: #fff; padding: 10px 20px; border-radius: 8px; display: inline-block; margin: 10px 0; border: 1px dashed var(--primary-color); }
     </style>
 </head>
 <body>
+
     <header>
         <h1>ADECHOUX</h1>
         <p>Vos bijoux préférés au meilleur prix</p>
     </header>
+
     <main>
         <h2>Nos Collections</h2>
         <div class="products-grid">
-            <!-- ========================= -->
             <!-- PRODUIT 1 -->
-            <!-- ========================= -->
             <article class="product-card" id="produit-1">
-                <img
-                    src="Images/collier-coeur-aigle.jpeg"
-                    alt="Collier Cœur Aigle d'Ange"
-                    class="product-media"
-                >
+                <img src="Images/collier-coeur-aigle (1).jpeg" alt="Collier Cœur Aigle d'Ange" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">
-                        Collier Cœur Aigle d'Ange
-                    </h3>
-                    <div class="product-price">
-                        4 500 FCFA
-                    </div>
+                    <h3 class="product-name">Collier Cœur Aigle d'Ange</h3>
+                    <div class="product-price">4 500 FCFA</div>
                     <div class="quantity-selector">
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, -1)"
-                        >
-                            −
-                        </button>
-                        <input
-                            type="number"
-                            value="1"
-                            min="1"
-                            class="qty-input"
-                            id="qty-1"
-                        >
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, 1)"
-                        >
-                            +
-                        </button>
+                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-1">
+                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button
-                        class="order-btn"
-                        onclick="addToCart(
-                            1,
-                            'Collier Cœur Aigle d’Ange',
-                            4500,
-                            'produit-1'
-                        )"
-                    >
-                        Ajouter au panier
-                    </button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Cœur Aigle d\'Ange', 4500, 'qty-1', 'produit-1')">Commander</button>
                 </div>
             </article>
-            <!-- ========================= -->
+
             <!-- PRODUIT 2 -->
-            <!-- ========================= -->
             <article class="product-card" id="produit-2">
-                <img
-                    src="Images/collier-amitie-barbie.jpeg"
-                    alt="Collier d'Amitié Barbie"
-                    class="product-media"
-                >
+                <img src="Images/collier-amitie-barbie.jpeg" alt="Collier d'amitié barbie" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">
-                        Collier d'Amitié Barbie
-                    </h3>
-                    <div class="product-price">
-                        4 000 FCFA
-                    </div>
+                    <h3 class="product-name">Collier d'Amitié Barbie</h3>
+                    <div class="product-price">4 000 FCFA</div>
                     <div class="quantity-selector">
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, -1)"
-                        >
-                            −
-                        </button>
-                        <input
-                            type="number"
-                            value="1"
-                            min="1"
-                            class="qty-input"
-                            id="qty-2"
-                        >
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, 1)"
-                        >
-                            +
-                        </button>
+                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-2">
+                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button
-                        class="order-btn"
-                        onclick="addToCart(
-                            2,
-                            'Collier d’Amitié Barbie',
-                            4000,
-                            'produit-2'
-                        )"
-                    >
-                        Ajouter au panier
-                    </button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier d\'Amitié Barbie', 4000, 'qty-2', 'produit-2')">Commander</button>
                 </div>
             </article>
-            <!-- ========================= -->
-            <!-- PRODUIT 3 : VIDÉO -->
-            <!-- ========================= -->
+
+            <!-- PRODUIT 3 (Vidéo muette) -->
             <article class="product-card" id="produit-3">
-                <video
-                    class="product-media"
-                    muted
-                    autoplay
-                    loop
-                    playsinline
-                >
-                    <source
-                        src="Images/collier-coeur-fleche.mp4"
-                        type="video/mp4"
-                    >
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
+                <video muted autoplay loop class="product-media"><source src="Images/collier-coeur-fleche.mp4" type="video/mp4"></video>
                 <div class="product-info">
-                    <h3 class="product-name">
-                        Collier en Cœur avec Flèche
-                    </h3>
-                    <div class="product-price">
-                        6 000 FCFA
-                    </div>
+                    <h3 class="product-name">Collier en Cœur avec Flèche</h3>
+                    <div class="product-price">6 000 FCFA</div>
                     <div class="quantity-selector">
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, -1)"
-                        >
-                            −
-                        </button>
-                        <input
-                            type="number"
-                            value="1"
-                            min="1"
-                            class="qty-input"
-                            id="qty-3"
-                        >
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, 1)"
-                        >
-                            +
-                        </button>
+                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-3">
+                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button
-                        class="order-btn"
-                        onclick="addToCart(
-                            3,
-                            'Collier en Cœur avec Flèche',
-                            6000,
-                            'produit-3'
-                        )"
-                    >
-                        Ajouter au panier
-                    </button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier en Cœur avec Flèche', 6000, 'qty-3', 'produit-3')">Commander</button>
                 </div>
             </article>
-            <!-- ========================= -->
+            
             <!-- PRODUIT 4 -->
-            <!-- ========================= -->
             <article class="product-card" id="produit-4">
-                <img
-                    src="Images/collier-miroir-barbie.jpeg"
-                    alt="Collier Miroir Barbie"
-                    class="product-media"
-                >
+                <img src="Images/collier-miroir-barbie.jpeg" alt="Collier miroir barbie" class="product-media">
                 <div class="product-info">
-                    <h3 class="product-name">
-                        Collier Miroir Barbie
-                    </h3>
-                    <div class="product-price">
-                        4 000 FCFA
-                    </div>
+                    <h3 class="product-name">Collier Miroir Barbie</h3>
+                    <div class="product-price">4 000 FCFA</div>
                     <div class="quantity-selector">
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, -1)"
-                        >
-                            −
-                        </button>
-                        <input
-                            type="number"
-                            value="1"
-                            min="1"
-                            class="qty-input"
-                            id="qty-4"
-                        >
-                        <button
-                            class="qty-btn"
-                            type="button"
-                            onclick="updateQty(this, 1)"
-                        >
-                            +
-                        </button>
+                        <button class="qty-btn" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-4">
+                        <button class="qty-btn" type="button" onclick="updateQty(this, 1)">+</button>
                     </div>
-                    <button
-                        class="order-btn"
-                        onclick="addToCart(
-                            4,
-                            'Collier Miroir Barbie',
-                            4000,
-                            'produit-4'
-                        )"
-                    >
-                        Ajouter au panier
-                    </button>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Miroir Barbie', 4000, 'qty-4', 'produit-4')">Commander</button>
                 </div>
             </article>
         </div>
-        <!-- ========================= -->
-        <!-- PAIEMENT -->
-        <!-- ========================= -->
+
         <section class="payment-section">
             <h3>Paiement Airtel Money</h3>
-            <div class="payment-number">
-                +241 77 50 59 46
-            </div>
+            <div class="payment-number">+241 77 50 59 46</div>
         </section>
     </main>
-    <!-- ========================= -->
-    <!-- BOUTON PANIER -->
-    <!-- ========================= -->
-    <button
-        class="cart-button"
-        onclick="openCart()"
-    >
-        🛒 Panier
-        <span
-            class="cart-count"
-            id="cart-count"
-        >
-            0
-        </span>
-    </button>
-    <!-- ========================= -->
-    <!-- PANIER -->
-    <!-- ========================= -->
-    <div
-        class="cart-panel"
-        id="cart-panel"
-    >
-        <div class="cart-header">
-            <h2>Mon panier</h2>
-            <button
-                class="close-cart"
-                onclick="closeCart()"
-            >
-                ×
-            </button>
-        </div>
-        <div id="cart-items">
-            <p class="empty-cart">
-                Votre panier est vide.
-            </p>
-        </div>
-        <div
-            class="cart-total"
-            id="cart-total"
-        >
-            Total : 0 FCFA
-        </div>
-        <a
-            href="#"
-            id="whatsapp-link"
-            class="whatsapp-btn"
-            target="_blank"
-        >
-            Commander sur WhatsApp
-        </a>
-    </div>
+
     <script>
-        /* =========================
-           GESTION DES QUANTITÉS
-        ========================= */
         function updateQty(button, change) {
-            const input =
-                button.parentElement.querySelector(".qty-input");
-            let value =
-                parseInt(input.value) || 1;
-            value += change;
-            if (value < 1) {
-                value = 1;
-            }
-            input.value = value;
+            const input = button.parentElement.querySelector('.qty-input');
+            let val = parseInt(input.value) + change;
+            input.value = val < 1 ? 1 : val;
         }
-        /* =========================
-           PANIER
-        ========================= */
-        let cart = [];
-        function addToCart(
-            id,
-            name,
-            price,
-            productId
-        ) {
-            const input =
-                document.getElementById("qty-" + id);
-            const quantity =
-                parseInt(input.value) || 1;
-            const existingProduct =
-                cart.find(item => item.id === id);
-            if (existingProduct) {
-                existingProduct.quantity += quantity;
-            } else {
-                cart.push({
-                    id: id,
-                    name: name,
-                    price: price,
-                    quantity: quantity,
-                    productId: productId
-                });
-            }
-            updateCart();
-            openCart();
-        }
-        function removeFromCart(id) {
-            cart =
-                cart.filter(item => item.id !== id);
-            updateCart();
-        }
-        /* =========================
-           AFFICHAGE DU PANIER
-        ========================= */
-        function updateCart() {
-            const container =
-                document.getElementById("cart-items");
-            const count =
-                document.getElementById("cart-count");
-            const totalElement =
-                document.getElementById("cart-total");
-            if (cart.length === 0) {
-                container.innerHTML =
-                    '<p class="empty-cart">Votre panier est vide.</p>';
-                totalElement.textContent =
-                    "Total : 0 FCFA";
-                count.textContent = "0";
-                updateWhatsApp();
-                return;
-            }
-            let html = "";
-            let total = 0;
-            let numberOfProducts = 0;
-            cart.forEach(item => {
-                const subtotal =
-                    item.price * item.quantity;
-                total += subtotal;
-                numberOfProducts += item.quantity;
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-name">
-                            ${item.name}
-                        </div>
-                        <div>
-                            Quantité :
-                            ${item.quantity}
-                        </div>
-                        <div class="cart-item-price">
-                            ${formatPrice(subtotal)} FCFA
-                        </div>
-                        <button
-                            class="remove-item"
-                            onclick="removeFromCart(${item.id})"
-                        >
-                            Supprimer
-                        </button>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-            totalElement.textContent =
-                "Total : " +
-                formatPrice(total) +
-                " FCFA";
-            count.textContent =
-                numberOfProducts;
-            updateWhatsApp();
-        }
-        /* =========================
-           WHATSAPP
-        ========================= */
-        function updateWhatsApp() {
-            const whatsapp =
-                document.getElementById("whatsapp-link");
-            if (cart.length === 0) {
-                whatsapp.href = "#";
-                return;
-            }
-            const phone =
-                "24177505946";
-            let message =
-                "Bonjour Adechoux 👋\n\n";
-            message +=
-                "Je souhaite passer une commande :\n\n";
-            let total = 0;
-            cart.forEach(item => {
-                const subtotal =
-                    item.price * item.quantity;
-                total += subtotal;
-                const productLink =
-                    window.location.origin +
-                    window.location.pathname +
-                    "#" +
-                    item.productId;
-                message +=
-                    "• " +
-                    item.name +
-                    "\n";
-                message +=
-                    "Quantité : " +
-                    item.quantity +
-                    "\n";
-                message +=
-                    "Prix unitaire : " +
-                    formatPrice(item.price) +
-                    " FCFA\n";
-                message +=
-                    "Sous-total : " +
-                    formatPrice(subtotal) +
-                    " FCFA\n";
-                message +=
-                    "Lien du produit : " +
-                    productLink +
-                    "\n\n";
-            });
-            message +=
-                "TOTAL : " +
-                formatPrice(total) +
-                " FCFA\n\n";
-            message +=
-                "Paiement Airtel Money :\n";
-            message +=
-                "+241 77 50 59 46";
-            whatsapp.href =
-                "https://wa.me/" +
-                phone +
-                "?text=" +
-                encodeURIComponent(message);
-        }
-        /* =========================
-           FORMATAGE DES PRIX
-        ========================= */
-        function formatPrice(price) {
-            return price.toLocaleString("fr-FR");
-        }
-        /* =========================
-           OUVRIR / FERMER LE PANIER
-        ========================= */
-        function openCart() {
-            document
-                .getElementById("cart-panel")
-                .classList.add("open");
-        }
-        function closeCart() {
-            document
-                .getElementById("cart-panel")
-                .classList.remove("open");
+
+        function orderOnWhatsApp(productName, price, qtyInputId, productId) {
+            const qty = document.getElementById(qtyInputId).value;
+            const total = price * qty;
+            const link = window.location.origin + window.location.pathname + "#" + productId;
+            const phoneNumber = "24177505946"; 
+            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA%0a- Lien produit : ${link}%0a(Paiement Airtel Money au +241 77 50 59 46)`;
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
 </body>
 </html>
-            
-           
