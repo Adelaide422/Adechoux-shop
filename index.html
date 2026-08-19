@@ -87,9 +87,9 @@
                 </div>
             </article>
 
-            <!-- 3 : Vidéo Cœur Flèche (Corrigé pour mobile avec controls et playsinline) -->
+            <!-- 3 : Vidéo Cœur Flèche -->
             <article class="product-card">
-                <video autoplay muted loop playsinline controls class="product-media"><source src="Images/coeur-fleche.mp4" type="video/mp4"></video>
+                <video autoplay muted loop playsinline controls class="product-media"><source src="Images/collier-coeur-fleche.mp4" type="video/mp4"></video>
                 <div class="product-info">
                     <h3 class="product-name">Collier en Cœur avec Flèche</h3>
                     <div class="product-price">6 000 FCFA</div>
@@ -283,7 +283,7 @@
             updateCartUI();
             alert(qty + " x " + name + " ajouté au panier !");
         }
-        function removeFromCart(index) {
+        function removeFromCard(index) {
             cart.splice(index, 1);
             updateCartUI();
         }
@@ -337,4 +337,3 @@
     </script>
 </body>
 </html>
-                    
