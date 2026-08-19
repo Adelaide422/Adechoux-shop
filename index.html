@@ -162,7 +162,7 @@
                 </div>
             </article>
 
-            <!-- 8 -->
+            <!-- 8 (Vidéo Ensemble Collier Bague Cœur) -->
             <article class="product-card">
                 <video muted autoplay loop class="product-media"><source src="Images/Ensemble-collier-bague-coeur.mp4" type="video/mp4"></video>
                 <div class="product-info">
@@ -177,7 +177,7 @@
                 </div>
             </article>
 
-            <!-- 9 -->
+            <!-- 9 (Vidéo Ensemble Collier Bracelet Bague Rose) -->
             <article class="product-card">
                 <video muted autoplay loop class="product-media"><source src="Images/Ensemble-collier-bracelet-bague-rose.mp4" type="video/mp4"></video>
                 <div class="product-info">
@@ -192,7 +192,7 @@
                 </div>
             </article>
 
-            <!-- 10 : Sac à main rose -->
+            <!-- 10 : Sac à main rose (Vidéo) -->
             <article class="product-card">
                 <video muted autoplay loop class="product-media"><source src="Images/Sac-à-main-rose.mp4" type="video/mp4"></video>
                 <div class="product-info">
@@ -207,7 +207,7 @@
                 </div>
             </article>
 
-            <!-- 11 : Sac à main -->
+            <!-- 11 : Sac à main (Vidéo) -->
             <article class="product-card">
                 <video muted autoplay loop class="product-media"><source src="Images/Sac-à-main.mp4" type="video/mp4"></video>
                 <div class="product-info">
@@ -228,10 +228,10 @@
             <div class="payment-number">+241 77 50 59 46</div>
             <div class="payment-instructions">
                 <b>Instructions pour commander :</b><br>
-                1. Faites une capture d'écran de l'article ou envoyez le lien/message via notre panier sur WhatsApp.<br>
-                2. Effectuez le paiement correspondant par <b>Airtel Money</b> au numéro ci-dessus.<br>
-                3. Envoyez-nous la capture de votre transaction.<br>
-                4. Frais de livraison : entre <b>2 000 et 3 000 FCFA</b> selon votre zone.
+                1. Faites une capture d'écran de l'article ou envoyez le récapitulatif de votre panier via WhatsApp.<br>
+                2. Effectuez le paiement du montant total par <b>Airtel Money</b> au numéro ci-dessus.<br>
+                3. Envoyez-nous la capture d'écran de la transaction sur WhatsApp pour valider votre commande.<br>
+                4. Les frais de livraison s'élèvent entre <b>2 000 et 3 000 FCFA</b> selon votre zone.
             </div>
         </section>
     </main>
@@ -309,14 +309,14 @@
                 alert("Votre panier est vide !");
                 return;
             }
-            let message = "Bonjour Adechoux, je souhaite commander les articles suivants :%0a";
+            let message = "Bonjour Adechoux, voici le récapitulatif de ma commande :%0a";
             let totalPrice = 0;
             cart.forEach(item => {
                 let itemTotal = item.price * item.qty;
                 totalPrice += itemTotal;
                 message += `- ${item.qty}x ${item.name} (${itemTotal.toLocaleString('fr-FR')} FCFA)%0a`;
             });
-            message += `%0a*Total articles : ${totalPrice.toLocaleString('fr-FR')} FCFA*%0a*(Hors frais de livraison : 2000 à 3000 FCFA)*%0a%0a(Voici ma capture/lien de commande. Je vais effectuer le paiement par Airtel Money au +241 77 50 59 46)`;
+            message += `%0a*Total articles : ${totalPrice.toLocaleString('fr-FR')} FCFA*%0a*(Hors frais de livraison : 2 000 à 3 000 FCFA)*%0a%0aJe vous envoie la capture de mon panier et je procède au paiement Airtel Money au +241 77 50 59 46. Voici la capture de mon paiement :`;
             window.open(`https://wa.me/24177505946?text=${message}`, '_blank');
         }
     </script>
