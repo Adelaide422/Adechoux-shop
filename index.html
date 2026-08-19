@@ -3,101 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adechoux - Boutique de Bijoux</title>
+    <title>Adechoux - Boutique de Bijoux Élégants</title>
     <style>
+        :root {
+            --primary-color: #FF69B4;
+            --secondary-color: #FFB6C1;
+            --accent-color: #FFF0F5;
+            --text-color: #333333;
+            --light-text-color: #777777;
+            --bg-color: #FFFFFF;
+            --card-bg: #F9F9F9;
+            --border-color: #EEEEEE;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
-            background-color: #faf6f0;
-            color: #333;
+            line-height: 1.6;
         }
+
         header {
-            background-color: #2c2c2c;
-            color: white;
-            text-align: center;
+            background-color: var(--accent-color);
             padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
+
         header h1 {
             margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 2px;
+            font-size: 3em;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
         }
+
         header p {
-            color: #d4af37;
+            margin: 10px 0 0;
             font-size: 1.2em;
-            margin-top: 10px;
+            color: var(--text-color);
+            opacity: 0.8;
         }
-        .container {
-            max-width: 1100px;
+
+        main {
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
-        h2 {
+
+        main h2 {
             text-align: center;
-            color: #2c2c2c;
-            margin-bottom: 30px;
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: var(--text-color);
         }
+
         .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
         }
+
         .product-card {
-            background: white;
-            border-radius: 8px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            width: 280px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            text-align: center;
-            padding-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .product-card img, .product-card video {
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-media {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
         }
-        .product-card h3 {
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
             font-size: 1.1em;
-            margin: 15px 10px 5px;
+            font-weight: 600;
+            margin: 0 0 10px;
+            color: var(--text-color);
         }
-        .price {
-            color: #d4af37;
-            font-weight: bold;
-            font-size: 1.2em;
+
+        .product-price {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
-        .btn-buy {
-            background-color: #2c2c2c;
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2em;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .qty-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .qty-minus {
+            border-right: 1px solid var(--border-color);
+        }
+
+        .qty-plus {
+            border-left: 1px solid var(--border-color);
+        }
+
+        .qty-input {
+            flex-grow: 1;
+            text-align: center;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+            padding: 10px 0;
+            width: 30px;
+        }
+
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] { -moz-appearance:textfield; }
+
+        .order-btn {
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: auto;
         }
-        .btn-buy:hover {
-            background-color: #d4af37;
+
+        .order-btn:hover {
+            background-color: #ff85c4;
         }
-        .payment-section {
-            background: #fff;
-            margin-top: 50px;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .payment-section h3 {
-            color: #d4af37;
-            margin-top: 0;
-        }
+
         footer {
+            background-color: var(--accent-color);
+            padding: 30px 20px;
             text-align: center;
-            padding: 20px;
-            background: #2c2c2c;
-            color: white;
-            margin-top: 50px;
-            font-size: 0.9em;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+            color: var(--light-text-color);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            main h2 { font-size: 1.6em; margin-bottom: 30px; }
+            .products-grid { gap: 20px; }
+            .product-card { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
@@ -108,53 +202,118 @@
         <p>Sublimez votre élégance avec nos bijoux exclusifs</p>
     </header>
 
-    <div class="container">
+    <main>
         <h2>Nos Collections</h2>
-        
+
         <div class="products-grid">
-            <div class="product-card">
-                <img src="collier-coeur-aigle.jpg" alt="Collier cœur aigle d'ange">
-                <h3>Collier cœur aigle d'ange</h3>
-                <div class="price">15 000 FCFA</div>
-                <a href="#paiement" class="btn-buy">Commander</a>
-            </div>
 
-            <div class="product-card">
-                <img src="collier-barbie-amitie.jpg" alt="Collier d'amitié Barbie">
-                <h3>Collier d'amitié Barbie et le palais de diamant</h3>
-                <div class="price">12 000 FCFA</div>
-                <a href="#paiement" class="btn-buy">Commander</a>
-            </div>
+            <!-- PRODUIT 1 -->
+            <article class="product-card">
+                <img src="Collier coeur aigle d'ange.jpeg" alt="Collier cœur aigle d'ange" class="product-media">
+                <div class="product-info">
+                    <h3 class="product-name">Collier Cœur Aigle d'Ange</h3>
+                    <div class="product-price">15 000 FCFA</div>
+                    <div class="quantity-selector">
+                        <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-1">
+                        <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
+                    </div>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Cœur Aigle d\'Ange', 15000, 'qty-1')">Commander</button>
+                </div>
+            </article>
 
-            <div class="product-card">
-                <video controls>
-                    <source src="collier-coeur- fleche.mp4" type="video/mp4">
+            <!-- PRODUIT 2 -->
+            <article class="product-card">
+                <img src="Collier d'amitié Barbie et le palais de diamant...." alt="Collier d'amitié Barbie" class="product-media">
+                <div class="product-info">
+                    <h3 class="product-name">Collier d'Amitié Barbie</h3>
+                    <div class="product-price">12 000 FCFA</div>
+                    <div class="quantity-selector">
+                        <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-2">
+                        <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
+                    </div>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier d\'Amitié Barbie', 12000, 'qty-2')">Commander</button>
+                </div>
+            </article>
+
+            <!-- PRODUIT 3 (Vidéo) -->
+            <article class="product-card">
+                <video controls class="product-media">
+                    <source src="Collier en coeur avec flèche.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
-                <h3>Collier en cœur avec flèche (Vidéo)</h3>
-                <div class="price">18 000 FCFA</div>
-                <a href="#paiement" class="btn-buy">Commander</a>
-            </div>
+                <div class="product-info">
+                    <h3 class="product-name">Collier en Cœur avec Flèche</h3>
+                    <div class="product-price">6 000 FCFA</div>
+                    <div class="quantity-selector">
+                        <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-3">
+                        <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
+                    </div>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier en Cœur avec Flèche', 6000, 'qty-3')">Commander</button>
+                </div>
+            </article>
+            
+            <!-- PRODUIT 4 -->
+            <article class="product-card">
+                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier Barbie Miroir" class="product-media">
+                <div class="product-info">
+                    <h3 class="product-name">Collier Barbie Miroir</h3>
+                    <div class="product-price">4 000 FCFA</div>
+                    <div class="quantity-selector">
+                        <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-4">
+                        <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
+                    </div>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Barbie Miroir', 4000, 'qty-4')">Commander</button>
+                </div>
+            </article>
 
-            <div class="product-card">
-                <img src="collier-miroir-barbie.jpg" alt="Collier miroir barbie">
-                <h3>Collier miroir barbie et le palais de diamant</h3>
-                <div class="price">15 000 FCFA</div>
-                <a href="#paiement" class="btn-buy">Commander</a>
-            </div>
-        </div>
+            <!-- PRODUIT 5 -->
+            <article class="product-card">
+                <img src="Collier miroir barbie et le palais de diamant.jpg" alt="Collier Barbie Château" class="product-media">
+                <div class="product-info">
+                    <h3 class="product-name">Collier Barbie Château</h3>
+                    <div class="product-price">4 000 FCFA</div>
+                    <div class="quantity-selector">
+                        <button class="qty-btn qty-minus" type="button" onclick="updateQty(this, -1)">-</button>
+                        <input type="number" value="1" min="1" class="qty-input" id="qty-5">
+                        <button class="qty-btn qty-plus" type="button" onclick="updateQty(this, 1)">+</button>
+                    </div>
+                    <button class="order-btn" onclick="orderOnWhatsApp('Collier Barbie Château', 4000, 'qty-5')">Commander</button>
+                </div>
+            </article>
 
-        <div class="payment-section" id="paiement">
-            <h3>Comment Commander & Payer au Gabon ?</h3>
-            <p>Pour valider votre commande, effectuez le paiement par Mobile Money au numéro suivant :</p>
-            <p><strong>Airtel Money / Moov Money :</strong> +241 XX XX XX XX</p>
-            <p style="font-size: 0.9em; color: #666;">Envoyez ensuite la capture d'écran de votre paiement avec le nom du bijou choisi sur notre service client WhatsApp pour la livraison.</p>
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Adechoux. Tous droits réservés.</p>
+        <p>© 2026 Adechoux. Tous droits réservés.</p>
     </footer>
 
+    <script>
+        function updateQty(button, change) {
+            const input = button.parentElement.querySelector('.qty-input');
+            let currentVal = parseInt(input.value);
+            if (isNaN(currentVal)) currentVal = 1;
+            
+            let newVal = currentVal + change;
+            if (newVal < 1) newVal = 1;
+            
+            input.value = newVal;
+        }
+
+        function orderOnWhatsApp(productName, price, qtyInputId) {
+            const qty = document.getElementById(qtyInputId).value;
+            const total = price * qty;
+            const phoneNumber = "241077505946"; 
+
+            const message = `Bonjour Adechoux, je souhaite commander :%0a- Article : ${productName}%0a- Quantité : ${qty}%0a- Total : ${total.toLocaleString('fr-FR')} FCFA`;
+            
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+    </script>
 </body>
 </html>
+     
